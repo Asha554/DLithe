@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Agency</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ff0000;
+            transition: background-color 0.5s ease-in-out;
+        }
+        header {
+            background: #0073e6;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 24px;
+        }
+        nav {
+            background: #005bb5;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            display: inline-block;
+        }
+        .container {
+            padding: 20px;
+            text-align: center;
+        }
+        .destination {
+            display: inline-block;
+            width: 300px;
+            margin: 20px;
+            padding: 15px;
+            background: white;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            text-align: center;
+        }
+        .destination img {
+            width: 100%;
+            height: 200px;
+            border-radius: 10px;
+        }
+        .destination h3, .destination p {
+            color: black;
+        }
+        .destination button {
+            padding: 12px 24px;
+            width: 200px; /* Increased width */
+            border: none;
+            background: #0073e6;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 16px; /* Increased font size */
+        }
+        .registration-container {
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+        .registration-container input {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .registration-container button {
+            width: 100%;
+            padding: 12px;
+            background: #0073e6;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            font-size: 18px;
+        }
+        footer {
+            background: #0073e6;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>Welcome to Dream Travels</header>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">Destinations</a>
+        <a href="#">Packages</a>
+        <a href="#">Contact</a>
+    </nav>
+    
+    <div class="container" id="homePage">
+        <h2>Popular Destinations</h2>
+
+        <div class="destination" id="maldives">
+            <img src="maldives.png" alt="Maldives">
+            <h3>Maldives</h3>
+            <p>Enjoy the crystal-clear waters and white sandy beaches.</p>
+            <button onclick="openRegistration('maldives')">Read More</button>
+        </div>
+
+        <div class="destination" id="paris">
+            <img src="paris.png" alt="Paris">
+            <h3>Paris</h3>
+            <p>Visit the iconic Eiffel Tower and enjoy French cuisine.</p>
+            <button onclick="openRegistration('paris')">Read More</button>
+        </div>
+
+        <div class="destination" id="bali">
+            <img src="bali.png" alt="Bali">
+            <h3>Bali</h3>
+            <p>Explore the beautiful temples and lush green landscapes.</p>
+            <button onclick="openRegistration('bali')">Read More</button>
+        </div>
+
+        <div class="destination" id="newyork">
+            <img src="newyork.png" alt="New York">
+            <h3>New York</h3>
+            <p>Experience the bustling streets of the Big Apple.</p>
+            <button onclick="openRegistration('newyork')">Read More</button>
+        </div>
+
+        <div class="destination" id="tokyo">
+            <img src="tokyo.png" alt="Tokyo">
+            <h3>Tokyo</h3>
+            <p>Discover the blend of tradition and futuristic technology.</p>
+            <button onclick="openRegistration('tokyo')">Read More</button>
+        </div>
+
+        <div class="destination" id="dubai">
+            <img src="dubai.png" alt="Dubai">
+            <h3>Dubai</h3>
+            <p>Enjoy the luxury, skyscrapers, and desert adventures.</p>
+            <button onclick="openRegistration('dubai')">Read More</button>
+        </div>
+
+        <div class="destination" id="london">
+            <img src="london.png" alt="London">
+            <h3>London</h3>
+            <p>Explore the rich history and vibrant culture of the UK.</p>
+            <button onclick="openRegistration('london')">Read More</button>
+        </div>
+
+        <div class="destination" id="sydney">
+            <img src="sydney.png" alt="Sydney">
+            <h3>Sydney</h3>
+            <p>See the famous Opera House and stunning beaches.</p>
+            <button onclick="openRegistration('sydney')">Read More</button>
+        </div>
+    </div>
+
+    <div class="registration-container" id="registrationPage">
+        <h2>Register for Travel</h2>
+        <form id="registrationForm">
+            <input type="text" id="name" placeholder="Full Name" required>
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="tel" id="phone" placeholder="Phone Number" pattern="\d{10}" required>
+            <input type="text" id="address" placeholder="Address" required>
+            <input type="text" id="city" placeholder="City" required>
+            <input type="text" id="country" placeholder="Country" required>
+            <input type="text" id="passport" placeholder="Passport Number" required>
+            <input type="date" id="dob" required>
+            <input type="text" id="gender" placeholder="Gender" required>
+            <input type="text" id="purpose" placeholder="Purpose of Travel" required>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <footer>&copy; 2025 Dream Travels. All rights reserved.</footer>
+
+    <script>
+        function openRegistration(destination) {
+            document.getElementById('homePage').style.display = 'none';
+            document.getElementById('registrationPage').style.display = 'block';
+            sessionStorage.setItem(destination, "registered");
+        }
+
+        document.getElementById('registrationForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            alert('Registration Successful!');
+            document.getElementById('homePage').style.display = 'block';
+            document.getElementById('registrationPage').style.display = 'none';
+
+            document.querySelectorAll('.destination button').forEach(button => {
+                if (sessionStorage.getItem(button.parentElement.id) === "registered") {
+                    button.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
