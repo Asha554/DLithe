@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Today</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f4f4f4;
+            color: #333;
+            text-align: center;
+            transition: background 0.5s, color 0.5s;
+        }
+
+        header {
+            background: #d32f2f;
+            color: white;
+            padding: 20px;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        section {
+            padding: 50px;
+            background: white;
+            margin: 20px auto;
+            width: 80%;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        article {
+            background: #e3e3e3;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 5px;
+        }
+
+        footer {
+            background: #d32f2f;
+            color: white;
+            padding: 10px;
+            margin-top: 20px;
+        }
+
+        /* Dark Mode */
+        .dark-mode {
+            background: #222;
+            color: white;
+        }
+
+        .dark-mode section {
+            background: #333;
+        }
+
+        .dark-mode article {
+            background: #444;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+        }
+
+        #toggle-mode {
+            background: #000;
+            color: white;
+        }
+
+        #update-news {
+            background: #007bff;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>News Today</h1>
+        <nav>
+            <ul>
+                <li><a href="#latest">Latest News</a></li>
+                <li><a href="#world">World</a></li>
+                <li><a href="#business">Business</a></li>
+                <li><a href="#technology">Technology</a></li>
+                <li><a href="#sports">Sports</a></li>
+            </ul>
+        </nav>
+        <button id="toggle-mode">Toggle Dark Mode</button>
+    </header>
+    
+    <section id="latest">
+        <h2 id="news-category">Latest News</h2>
+        <article>
+            <h3 id="news-title">Prime Minister Modi Meets President Trump</h3>
+            <p id="news-content">Prime Minister Narendra Modi and US President Donald Trump met in Washington to strengthen diplomatic ties. Their discussions covered a 10-year defense cooperation plan, boosting trade relations, and increasing technology collaborations. The US aims to sell advanced fighter jets to India, while India seeks US investment in manufacturing and infrastructure projects.</p>
+        </article>
+    </section>
+    
+    <button id="update-news">Update News</button>
+    
+    <footer>
+        <p>&copy; 2025 News Today | All rights reserved.</p>
+    </footer>
+
+    <script>
+        let newsIndex = 0;
+
+        const newsData = [
+            {
+                category: "World News",
+                title: "China Develops New Satellite Defense System",
+                content: "China has unveiled a satellite defense system that can neutralize foreign satellites if necessary. This system is part of China's military modernization plan, aimed at reducing reliance on GPS-based systems and countering US space dominance."
+            },
+            {
+                category: "Sports",
+                title: "Messi Scores Hat-Trick in Historic Match",
+                content: "Lionel Messi delivered an unforgettable performance, scoring three goals in a crucial Champions League match. His spectacular dribbling and finishing skills left fans and analysts in awe, as he led his team to a stunning 5-2 victory."
+            },
+            {
+                category: "Technology",
+                title: "AI Robots Now Writing News Articles",
+                content: "Artificial intelligence is transforming journalism as AI-powered systems can now write complete news articles within seconds. Media organizations are debating whether AI can replace human journalists or should only be used as a tool for research and fact-checking."
+            },
+            {
+                category: "Business",
+                title: "Stock Market Sees Record Growth",
+                content: "Global markets have surged to record highs following strong earnings reports from major corporations. Investors remain optimistic about future growth, with technology and green energy sectors leading the charge."
+            },
+            {
+                category: "Science",
+                title: "NASA Discovers New Exoplanet with Signs of Life",
+                content: "NASA scientists have detected an exoplanet in the habitable zone of a distant star, with conditions that might support life. The planet's atmosphere contains water vapor and methane, leading astronomers to consider it a prime candidate for further study."
+            }
+        ];
+
+        // Toggle Dark Mode
+        document.getElementById("toggle-mode").addEventListener("click", () => {
+            document.body.classList.toggle("dark-mode");
+        });
+
+        // Update News on Button Click
+        document.getElementById("update-news").addEventListener("click", () => {
+            let newsCategory = document.getElementById("news-category");
+            let newsTitle = document.getElementById("news-title");
+            let newsContent = document.getElementById("news-content");
+
+            // Update category, title, and content
+            newsCategory.textContent = newsData[newsIndex].category;
+            newsTitle.textContent = newsData[newsIndex].title;
+            newsContent.textContent = newsData[newsIndex].content;
+
+            // Increment index and reset if it reaches the end
+            newsIndex = (newsIndex + 1) % newsData.length;
+        });
+    </script>
+</body>
+</html>

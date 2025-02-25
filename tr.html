@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Agency</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            transition: background-color 0.5s ease-in-out;
+        }
+        header, footer {
+            background: #0073e6;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 24px;
+        }
+        .container {
+            padding: 20px;
+            text-align: center;
+        }
+        .budget-container, .registration-container {
+            background: white;
+            padding: 20px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            width: 50%;
+            margin: auto;
+            margin-top: 20px;
+        }
+        .budget-container ul {
+            list-style: none;
+            padding: 0;
+        }
+        .budget-container li {
+            padding: 10px;
+            font-size: 18px;
+            border-bottom: 1px solid #ccc;
+        }
+        .budget-container button {
+            padding: 12px 24px;
+            border: none;
+            background: #0073e6;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        select, input {
+            padding: 10px;
+            font-size: 16px;
+            margin: 10px;
+            width: 80%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .registration-container input {
+            width: 40%;
+        }
+    </style>
+</head>
+<body>
+    <header>Welcome to Dream Travels</header>
+    
+    <div class="container">
+        <h2>Budget Breakdown</h2>
+        <div class="budget-container">
+            <p>Enter your budget and select a destination:</p>
+            <input type="number" id="userBudget" placeholder="Enter your budget in ₹">
+            <select id="destination">
+                <option value="maldives">Maldives</option>
+                <option value="paris">Paris</option>
+                <option value="bali">Bali</option>
+                <option value="newyork">New York</option>
+                <option value="tokyo">Tokyo</option>
+                <option value="dubai">Dubai</option>
+                <option value="london">London</option>
+                <option value="sydney">Sydney</option>
+            </select>
+            <button onclick="calculateBudget()">Show Breakdown</button>
+            <ul id="budgetDetails"></ul>
+        </div>
+        
+        <div class="registration-container" id="registrationForm" style="display:none;">
+            <h3>Register for Your Trip</h3>
+            <form onsubmit="submitForm(event)">
+                <input type="text" id="fullName" placeholder="Full Name" required><br>
+                <input type="email" id="email" placeholder="Email Address" required><br>
+                <input type="tel" id="phone" placeholder="Phone Number" required><br>
+                <button type="submit">Register</button>
+            </form>
+        </div>
+    </div>
+    
+    <footer>&copy; 2025 Dream Travels. All rights reserved.</footer>
+    
+    <script>
+        function calculateBudget() {
+            let totalBudget = parseFloat(document.getElementById('userBudget').value);
+            if (isNaN(totalBudget) || totalBudget <= 0) {
+                alert('Please enter a valid budget.');
+                return;
+            }
+            
+            let accommodation = totalBudget * 0.4;
+            let flights = totalBudget * 0.3;
+            let food = totalBudget * 0.15;
+            let activities = totalBudget * 0.1;
+            let miscellaneous = totalBudget - (accommodation + flights + food + activities);
+            
+            let expenses = {
+                'Accommodation': accommodation,
+                'Flights': flights,
+                'Food': food,
+                'Activities': activities,
+                'Miscellaneous': miscellaneous
+            };
+            
+            let budgetList = document.getElementById('budgetDetails');
+            budgetList.innerHTML = `<h3>Budget Breakdown for ${document.getElementById('destination').value}</h3>`;
+            
+            for (let item in expenses) {
+                let li = document.createElement('li');
+                li.textContent = `${item}: ₹${expenses[item].toFixed(2)}`;
+                budgetList.appendChild(li);
+            }
+            
+            // Show the registration form after displaying the budget
+            document.getElementById('registrationForm').style.display = 'block';
+        }
+
+        function submitForm(event) {
+            event.preventDefault();
+            let name = document.getElementById('fullName').value;
+            let email = document.getElementById('email').value;
+            let phone = document.getElementById('phone').value;
+            
+            if (name && email && phone) {
+                alert(`Thank you for registering, ${name}! We will contact you shortly.`);
+            } else {
+                alert('Please fill out all fields.');
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asha's Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Asha Nayak</h1>
+        <nav>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section id="about">
+        <h2>About Me</h2>
+        <p>An enthusiastic fresher with highly motivated and team play skills, holding a Bachelor of Engineering degree in Artificial Intelligence and Machine Learning. Eager to learn new technologies and methodologies, always willing to innovate new things to improve existing technology.</p>
+    </section>
+    
+    <section id="education">
+        <h2>Education</h2>
+        <p><strong>Bachelor of Engineering in Artificial Intelligence and Machine Learning</strong><br>
+        Shri Madhwa Vadiraja Institute Of Technology and Management, Bantakal</p>
+        <p><strong>Pre-University College</strong><br>
+        Hindu Junior College, Shirva | Percentage: 88.6%</p>
+        <p><strong>SSLC</strong><br>
+        Hindu Junior College, Shirva | Percentage: 88.2%</p>
+    </section>
+    
+    <section id="projects">
+        <h2>Projects</h2>
+        <div class="project">
+            <h3>Electricity Billing System</h3>
+            <p>Designed to efficiently manage customer data and track electricity consumption using Java and MySQL. Key functionalities include bill calculation, payment processing, and historical usage tracking.</p>
+        </div>
+        <div class="project">
+            <h3>Brain Tumor Detection and Classification Using SVM</h3>
+            <p>Achieved 96% accuracy with advanced pre-processing and feature extraction techniques. Processed over 100 MRI scans.</p>
+        </div>
+        <div class="project">
+            <h3>AI Virtual Mouse</h3>
+            <p>Developed features for hand gesture-based control, enabling seamless cursor movement, clicks, and drag-drop functions.</p>
+        </div>
+    </section>
+    
+    <section id="skills">
+        <h2>Skills</h2>
+        <ul>
+            <li>C Programming</li>
+            <li>Java</li>
+            <li>Python</li>
+            <li>Machine Learning</li>
+        </ul>
+    </section>
+
+    <!-- New Experience Section -->
+    <section id="experience">
+        <h2>Experience</h2>
+        <p id="expText"></p>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Asha Nayak</p>
+    </footer>
+
+    <script>
+        // JavaScript Code for Dynamic Experience Calculation
+        let graduationYear = 2024; // Adjust if needed
+        let currentYear = new Date().getFullYear();
+        
+        // Calculate experience (if graduated, show years; else, show "Fresher")
+        let experience = currentYear >= graduationYear ? (currentYear - graduationYear) + " years of experience" : "Fresher";
+
+        // Display result in the experience section
+        document.getElementById("expText").innerText = "Professional Experience: " + experience;
+    </script>
+</body>
+</html>
